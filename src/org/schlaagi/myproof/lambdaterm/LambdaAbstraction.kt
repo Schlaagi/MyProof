@@ -1,4 +1,7 @@
 package org.schlaagi.myproof.lambdaterm
 
-class LambdaAbstraction(variable: Variable, term: LambdaTerm) : LambdaTerm {
+class LambdaAbstraction(val variable: Variable, val term: LambdaTerm) : LambdaTerm {
+    override fun getFreeVariables(): Set<Variable> {
+        return term.getFreeVariables().minus(variable);
+    }
 }
