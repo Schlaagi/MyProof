@@ -13,4 +13,8 @@ class Variable(val name: String) : LambdaTerm {
         return this
     }
 
+    override fun toString(): String {
+        return name
+    }
+
 }
