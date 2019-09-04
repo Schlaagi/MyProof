@@ -12,6 +12,10 @@ class LambdaAbstraction(val variable: Variable, val term: LambdaTerm) : LambdaTe
         return LambdaAbstraction(variable, term.renameVariable(old, new))
     }
 
+    override fun evaluate(): LambdaTerm {
+        return Application(variable, term.evaluate())
+    }
+
     override fun toString(): String {
         return "lambda ($variable) $term"
     }
