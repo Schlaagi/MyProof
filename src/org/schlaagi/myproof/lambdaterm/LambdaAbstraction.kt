@@ -21,12 +21,12 @@ class LambdaAbstraction(val variable: Variable, val term: LambdaTerm) : LambdaTe
         if (variable == variableToSubstitute) {
             return this
         }
-        if (substitutionTerm.getFreeVariables().contains(variableToSubstitute)){
+        if (substitutionTerm.getFreeVariables().contains(variable)) {
             val usedVariables = term.getFreeVariables().union(substitutionTerm.getFreeVariables())
             //Todo: Generate a new Variable
             val newVariable = Variable("fill in something here!")
             val renamedTerm = term.renameVariable(variable, newVariable)
-            return LambdaAbstraction(newVariable,renamedTerm.substitute(variableToSubstitute, substitutionTerm) )
+            return LambdaAbstraction(newVariable, renamedTerm.substitute(variableToSubstitute, substitutionTerm))
         }
         return LambdaAbstraction(variable, term.substitute(variable, substitutionTerm))
 
@@ -37,7 +37,7 @@ class LambdaAbstraction(val variable: Variable, val term: LambdaTerm) : LambdaTe
     }
 
     override fun toString(): String {
-        return "/\\ ($variable) $term"
+        return "/\\ $variable $term"
     }
 
 

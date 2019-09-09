@@ -1,6 +1,7 @@
 package org.schlaagi.myproof.lambdaterm
 
-class Variable(val name: String) : LambdaTerm {
+class
+Variable(val name: String) : LambdaTerm {
     override fun getFreeVariables(): Set<Variable> {
         return setOf(this)
     }
