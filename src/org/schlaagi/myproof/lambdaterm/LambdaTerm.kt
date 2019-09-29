@@ -1,8 +1,7 @@
 package org.schlaagi.myproof.lambdaterm
 
 interface LambdaTerm {
-    //ToDo: make real getter
-    fun getFreeVariables(): Set<Variable>
+    val freeVariables: Set<Variable>
 
     fun renameVariable(old: Variable, new: Variable): LambdaTerm
 

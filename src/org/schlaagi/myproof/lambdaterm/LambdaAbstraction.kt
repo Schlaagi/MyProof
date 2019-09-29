@@ -1,9 +1,8 @@
 package org.schlaagi.myproof.lambdaterm
 
 class LambdaAbstraction(val variable: Variable, val term: LambdaTerm) : LambdaTerm {
-    override fun getFreeVariables(): Set<Variable> {
-        return term.getFreeVariables().minus(variable)
-    }
+    override val freeVariables: Set<Variable>
+        get() = term.freeVariables.minus(variable)
 
     override fun renameVariable(old: Variable, new: Variable): LambdaTerm {
         if (old == variable) {
@@ -21,8 +20,8 @@ class LambdaAbstraction(val variable: Variable, val term: LambdaTerm) : LambdaTe
         if (variable == variableToSubstitute) {
             return this
         }
-        if (substitutionTerm.getFreeVariables().contains(variable)) {
-            val usedVariables = term.getFreeVariables().union(substitutionTerm.getFreeVariables())
+        if (substitutionTerm.freeVariables.contains(variable)) {
+            val usedVariables = term.freeVariables.union(substitutionTerm.freeVariables)
             //Todo: Generate a new Variable
             val newVariable = Variable("fill in something here!")
             val renamedTerm = term.renameVariable(variable, newVariable)
