@@ -27,7 +27,7 @@ class LambdaAbstraction(val variable: Variable, val term: LambdaTerm) : LambdaTe
             val renamedTerm = term.renameVariable(variable, newVariable)
             return LambdaAbstraction(newVariable, renamedTerm.substitute(variableToSubstitute, substitutionTerm))
         }
-        return LambdaAbstraction(variable, term.substitute(variable, substitutionTerm))
+        return LambdaAbstraction(variable, term.substitute(variableToSubstitute, substitutionTerm))
 
     }
 
@@ -36,7 +36,7 @@ class LambdaAbstraction(val variable: Variable, val term: LambdaTerm) : LambdaTe
     }
 
     override fun toString(): String {
-        return "/\\ $variable $term"
+        return "/\\$variable $term"
     }
 
 

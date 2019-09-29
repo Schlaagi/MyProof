@@ -11,7 +11,7 @@ class Application(val first: LambdaTerm, val second: LambdaTerm) : LambdaTerm {
 
     override fun evaluate(): LambdaTerm {
         if (first is LambdaAbstraction) {
-            return second.substitute(first.variable, first.term).evaluate()
+            return first.term.substitute(first.variable, second).evaluate()
         }
         return Application(first.evaluate(), second.evaluate())
     }
