@@ -19,12 +19,12 @@ fun applyRecursively(function: LambdaTerm, variable: Variable, numberOfTimes: In
     return variable
 }
 
-fun unchurchify(term: LambdaTerm): Int {
-    if (term is LambdaAbstraction) {
-        val f = term.variable
-        if (term.term is LambdaAbstraction) {
-            val x = term.term.variable
-            return unchirchifyRec(f, x, term.term.term)
+fun unchurchify(churchNumeral: LambdaTerm): Int {
+    if (churchNumeral is LambdaAbstraction) {
+        val f = churchNumeral.variable
+        if (churchNumeral.term is LambdaAbstraction) {
+            val x = churchNumeral.term.variable
+            return unchirchifyRec(f, x, churchNumeral.term.term)
         }
     }
     throw IllegalArgumentException()
