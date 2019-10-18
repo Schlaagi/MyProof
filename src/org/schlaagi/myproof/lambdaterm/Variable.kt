@@ -1,6 +1,8 @@
 package org.schlaagi.myproof.lambdaterm
 
-class Variable(val name: String) : LambdaTerm {
+import org.schlaagi.myproof.minimal_logic.Formula
+
+data class Variable(val name: String) : LambdaTerm, Formula{
     override val freeVariables: Set<Variable>
         get() = setOf(this)
 
