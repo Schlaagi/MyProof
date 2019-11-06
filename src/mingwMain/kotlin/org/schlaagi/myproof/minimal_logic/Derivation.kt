@@ -25,7 +25,7 @@ fun Application.inferFormula(context: Map<Variable, Formula>): Formula {
     if(formula1 is Implication && formula1.antecedent == formula2){
         return formula1.consequent
     }
-    throw java.lang.IllegalArgumentException("$this is not a valid Formula with context $context")
+    throw IllegalArgumentException("$this is not a valid Formula with context $context")
 }
 
 // Todo: Remove this function if it is not needed (I dont think it is)
